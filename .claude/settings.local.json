@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(node -e \"const z = require\\('./node_modules/zustand/package.json'\\); console.log\\('zustand:', z.version\\)\")",
+      "Bash(node -e \"import\\('date-fns/locale'\\).then\\(m => console.log\\('es:', typeof m.es\\)\\)\")"
+    ]
+  }
+}
