@@ -25,7 +25,6 @@ export const genreConfig = {
 export const getGenreConfig = (genre) =>
   genreConfig[genre] || { bg: 'linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%)', accent: '#a78bfa', emoji: '🎵' }
 
-// ─── Seed Users ──────────────────────────────────────────────────────────────
 export const seedUsers = [
   {
     id: 'u1',
@@ -84,7 +83,6 @@ export const seedUsers = [
   },
 ]
 
-// ─── Seed Events ─────────────────────────────────────────────────────────────
 export const seedEvents = [
   {
     id: 'e1',
@@ -315,7 +313,6 @@ export const seedEvents = [
     featured: true,
   },
 
-  // ── Rock ────────────────────────────────────────────────────────────────────
   {
     id: 'e13',
     title: 'Rock de las Pampas',
@@ -469,7 +466,6 @@ export const seedEvents = [
     featured: true,
   },
 
-  // ── Indie ───────────────────────────────────────────────────────────────────
   {
     id: 'e21',
     title: 'Dream Pop Night',
@@ -585,7 +581,6 @@ export const seedEvents = [
     featured: false,
   },
 
-  // ── Techno / Electronic ─────────────────────────────────────────────────────
   {
     id: 'e27',
     title: 'Acid House Night',
@@ -701,7 +696,6 @@ export const seedEvents = [
     featured: false,
   },
 
-  // ── Trap / Hip-Hop ──────────────────────────────────────────────────────────
   {
     id: 'e33',
     title: 'Trap Olimpo',
@@ -817,7 +811,6 @@ export const seedEvents = [
     featured: false,
   },
 
-  // ── Jazz ────────────────────────────────────────────────────────────────────
   {
     id: 'e39',
     title: 'Bossa Nova Night',
@@ -895,7 +888,6 @@ export const seedEvents = [
     featured: false,
   },
 
-  // ── Blues ───────────────────────────────────────────────────────────────────
   {
     id: 'e43',
     title: 'Blues en la Costa',
@@ -973,7 +965,6 @@ export const seedEvents = [
     featured: false,
   },
 
-  // ── Folklore ────────────────────────────────────────────────────────────────
   {
     id: 'e47',
     title: 'Chacarera en la Ciudad',
@@ -1051,7 +1042,6 @@ export const seedEvents = [
     featured: false,
   },
 
-  // ── Metal ───────────────────────────────────────────────────────────────────
   {
     id: 'e51',
     title: 'Death Metal Night',
@@ -1129,7 +1119,6 @@ export const seedEvents = [
     featured: true,
   },
 
-  // ── Pop ─────────────────────────────────────────────────────────────────────
   {
     id: 'e55',
     title: 'Pop Moderno BA',
@@ -1226,7 +1215,6 @@ export const seedEvents = [
     featured: false,
   },
 
-  // ── Reggaeton ───────────────────────────────────────────────────────────────
   {
     id: 'e60',
     title: 'Urban Beats BA',

@@ -42,13 +42,11 @@ export default function CreateEvent() {
     if (Object.keys(errs).length > 0) { setErrors(errs); return }
 
     setLoading(true)
-    await new Promise(r => setTimeout(r, 600))
-
     const tags = form.tags
       ? form.tags.split(',').map(t => t.trim().toLowerCase()).filter(Boolean)
       : []
 
-    const newEvent = addEvent({
+    const newEvent = await addEvent({
       title: form.title.trim(),
       artist: form.artist.trim(),
       genre: form.genre,
@@ -73,7 +71,6 @@ export default function CreateEvent() {
     <div className="min-h-screen px-4 sm:px-6 py-10">
       <div className="max-w-3xl mx-auto">
 
-        {/* Header */}
         <div className="flex items-center gap-4 mb-8">
           <Link to="/" className="p-2 rounded-lg glass glass-hover transition-all">
             <ArrowLeft className="w-4 h-4 text-white/60" />
@@ -97,10 +94,9 @@ export default function CreateEvent() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Form */}
+
           <form onSubmit={handleSubmit} className="lg:col-span-2 space-y-6">
 
-            {/* Section: Identidad */}
             <FormSection title="Identidad del evento" icon={Music}>
               <FormField label="Título del evento" required error={errors.title}>
                 <input
@@ -149,7 +145,6 @@ export default function CreateEvent() {
               </FormField>
             </FormSection>
 
-            {/* Section: Lugar y fecha */}
             <FormSection title="Lugar y fecha" icon={MapPin}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <FormField label="Ciudad" required error={errors.city}>
@@ -198,7 +193,6 @@ export default function CreateEvent() {
               </div>
             </FormSection>
 
-            {/* Section: Tickets */}
             <FormSection title="Precio y capacidad" icon={DollarSign}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <FormField label="Precio de entrada (ARS)" error={errors.price}>
@@ -225,7 +219,6 @@ export default function CreateEvent() {
               </div>
             </FormSection>
 
-            {/* Section: Info */}
             <FormSection title="Descripción y etiquetas" icon={FileText}>
               <FormField label="Descripción del evento" error={errors.description}>
                 <textarea
@@ -252,7 +245,6 @@ export default function CreateEvent() {
               </FormField>
             </FormSection>
 
-            {/* Submit */}
             <div className="flex gap-3 pt-2">
               <Link to="/" className="btn-secondary flex-1 text-center text-sm py-3">
                 Cancelar
@@ -269,13 +261,12 @@ export default function CreateEvent() {
             </div>
           </form>
 
-          {/* Live preview */}
           <div className="hidden lg:block">
             <div className="sticky top-24 space-y-4">
               <h3 className="text-sm font-bold text-white/50 uppercase tracking-wider">Vista previa</h3>
               {form.title || form.genre ? (
                 <div className="rounded-2xl overflow-hidden border border-white/10">
-                  {/* Mini card preview */}
+
                   <div className="h-32 relative"
                        style={{ background: cfg ? cfg.bg : 'linear-gradient(135deg, #1e1b4b, #4c1d95)' }}>
                     <div className="absolute inset-0 flex items-center justify-center text-5xl opacity-20 select-none">
@@ -300,7 +291,7 @@ export default function CreateEvent() {
                   </div>
                   <div className="p-3" style={{ background: 'rgba(13,13,28,0.9)' }}>
                     <h4 className="font-bold text-sm text-white truncate">{form.title || 'Título del evento'}</h4>
-                    <p className="text-xs mt-0.5 truncate" style={{ color: cfg?.accent || '#a78bfa' }}>
+                    <p className="text-xs mt-0.5 truncate" style={{ color: cfg?.accent || '#f07a3a' }}>
                       {form.artist || 'Artista'}
                     </p>
                     <div className="mt-2 space-y-1 text-xs text-white/40">

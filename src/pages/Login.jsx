@@ -31,8 +31,7 @@ export default function Login() {
     e.preventDefault()
     if (!form.email || !form.password) { setError('Completá todos los campos.'); return }
     setLoading(true)
-    await new Promise(r => setTimeout(r, 400)) // simulate async
-    const result = login(form.email, form.password)
+    const result = await login(form.email, form.password)
     setLoading(false)
     if (result.ok) {
       navigate(from, { replace: true })
@@ -41,35 +40,30 @@ export default function Login() {
     }
   }
 
-  const loginDemo = (email) => {
+  const loginDemo = async (email) => {
     setForm({ email, password: 'demo123' })
     setError('')
-    setTimeout(() => {
-      const result = login(email, 'demo123')
-      if (result.ok) navigate(from, { replace: true })
-    }, 100)
+    const result = await login(email, 'demo123')
+    if (result.ok) navigate(from, { replace: true })
   }
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md animate-slide-up">
 
-        {/* Logo */}
         <div className="text-center mb-8">
           <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4"
-               style={{ background: 'linear-gradient(135deg, #7c3aed 0%, #ec4899 100%)' }}>
+               style={{ background: 'linear-gradient(135deg, #f07a3a 0%, #e8621e 100%)' }}>
             <Music2 className="w-6 h-6 text-white" />
           </div>
           <h1 className="text-2xl font-extrabold text-white">Bienvenido de vuelta</h1>
           <p className="text-sm text-white/40 mt-1">Ingresá a tu cuenta de SoundSeekers</p>
         </div>
 
-        {/* Card */}
         <div className="glass rounded-2xl p-6 sm:p-8 space-y-5">
 
-          {/* Demo accounts */}
           <div className="rounded-xl p-4 space-y-2"
-               style={{ background: 'rgba(124,58,237,0.08)', border: '1px solid rgba(124,58,237,0.15)' }}>
+               style={{ background: 'rgba(232,98,30,0.08)', border: '1px solid rgba(232,98,30,0.15)' }}>
             <p className="text-xs font-semibold text-brand-400 mb-3">Cuentas demo (clic para ingresar)</p>
             {DEMO_ACCOUNTS.map(acc => (
               <button
@@ -91,16 +85,14 @@ export default function Login() {
             <p className="text-[11px] text-white/25 mt-1">Contraseña: <code className="text-brand-400">demo123</code></p>
           </div>
 
-          {/* Divider */}
           <div className="flex items-center gap-3">
             <div className="flex-1 h-px bg-white/[0.06]" />
             <span className="text-xs text-white/25">o ingresá con tu cuenta</span>
             <div className="flex-1 h-px bg-white/[0.06]" />
           </div>
 
-          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Email */}
+
             <div>
               <label className="block text-xs font-medium text-white/50 mb-1.5">Email</label>
               <div className="relative">
@@ -116,7 +108,6 @@ export default function Login() {
               </div>
             </div>
 
-            {/* Password */}
             <div>
               <label className="block text-xs font-medium text-white/50 mb-1.5">Contraseña</label>
               <div className="relative">
@@ -136,7 +127,6 @@ export default function Login() {
               </div>
             </div>
 
-            {/* Error */}
             {error && (
               <div className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm animate-slide-down"
                    style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.2)', color: '#fca5a5' }}>
@@ -145,7 +135,6 @@ export default function Login() {
               </div>
             )}
 
-            {/* Submit */}
             <button type="submit" disabled={loading}
               className="btn-primary w-full justify-center flex items-center gap-2 py-3 text-sm disabled:opacity-60 disabled:cursor-not-allowed">
               {loading ? (
@@ -158,7 +147,6 @@ export default function Login() {
           </form>
         </div>
 
-        {/* Register link */}
         <p className="text-center text-sm text-white/40 mt-5">
           ¿No tenés cuenta?{' '}
           <Link to="/registro" className="text-brand-400 hover:text-brand-300 font-semibold transition-colors">

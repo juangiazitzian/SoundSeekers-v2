@@ -21,8 +21,8 @@ export default function Profile() {
   const roleLabel = currentUser.role === 'artist' ? 'Artista' : currentUser.role === 'organizer' ? 'Organizador' : 'Fan'
   const roleEmoji = currentUser.role === 'artist' ? '🎵' : currentUser.role === 'organizer' ? '🎪' : '🎧'
 
-  const saveBio = () => {
-    updateProfile({ bio })
+  const saveBio = async () => {
+    await updateProfile({ bio })
     setEditing(false)
   }
 
@@ -30,20 +30,19 @@ export default function Profile() {
     <div className="min-h-screen px-4 sm:px-6 py-10 animate-fade-in">
       <div className="max-w-4xl mx-auto">
 
-        {/* Profile card */}
         <div className="glass rounded-2xl p-6 sm:p-8 mb-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-            {/* Avatar */}
+
             <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-2xl font-extrabold flex-shrink-0"
-                 style={{ background: 'linear-gradient(135deg, #7c3aed 0%, #ec4899 100%)', color: 'white' }}>
+                 style={{ background: 'linear-gradient(135deg, #f07a3a 0%, #e8621e 100%)', color: 'white' }}>
               {currentUser.initials}
             </div>
-            {/* Info */}
+
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <h1 className="text-xl font-extrabold text-white">@{currentUser.username}</h1>
                 <span className="badge text-xs"
-                      style={{ background: 'rgba(124,58,237,0.15)', color: '#a78bfa', border: '1px solid rgba(124,58,237,0.2)' }}>
+                      style={{ background: 'rgba(232,98,30,0.12)', color: '#f07a3a', border: '1px solid rgba(232,98,30,0.25)' }}>
                   {roleEmoji} {roleLabel}
                 </span>
               </div>
@@ -54,7 +53,6 @@ export default function Profile() {
                 </p>
               )}
 
-              {/* Bio */}
               <div className="mt-3">
                 {editing ? (
                   <div className="flex gap-2 items-start">
@@ -91,7 +89,6 @@ export default function Profile() {
               </div>
             </div>
 
-            {/* Stats */}
             <div className="flex sm:flex-col items-center sm:items-end gap-4 sm:gap-2 flex-shrink-0">
               <div className="text-center sm:text-right">
                 <div className="text-xl font-extrabold gradient-text-brand">{myEvents.length}</div>
@@ -105,7 +102,6 @@ export default function Profile() {
           </div>
         </div>
 
-        {/* My events */}
         <div>
           <div className="flex items-center justify-between mb-5">
             <h2 className="section-title text-xl">

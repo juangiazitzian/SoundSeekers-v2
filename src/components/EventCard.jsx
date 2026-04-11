@@ -37,16 +37,16 @@ export default function EventCard({ event, variant = 'default' }) {
   if (variant === 'featured') {
     return (
       <Link to={`/evento/${id}`} className="card-event group relative block animate-slide-up">
-        {/* Header gradient */}
+
         <div className="relative h-52 overflow-hidden" style={{ background: cfg.bg }}>
-          {/* Texture overlay */}
+
           <div className="absolute inset-0 opacity-10"
                style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
-          {/* Genre emoji */}
+
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl opacity-20 select-none">
             {cfg.emoji}
           </div>
-          {/* Badges */}
+
           <div className="absolute top-3 left-3 flex gap-2">
             <span className="badge text-[11px] font-bold"
                   style={{ background: `${cfg.accent}22`, color: cfg.accent, border: `1px solid ${cfg.accent}44` }}>
@@ -54,24 +54,23 @@ export default function EventCard({ event, variant = 'default' }) {
             </span>
             {featured && (
               <span className="badge text-[11px] font-bold"
-                    style={{ background: 'rgba(251,191,36,0.15)', color: '#fbbf24', border: '1px solid rgba(251,191,36,0.3)' }}>
+                    style={{ background: 'rgba(251,191,36,0.12)', color: '#fbbf24', border: '1px solid rgba(251,191,36,0.28)' }}>
                 ★ Destacado
               </span>
             )}
           </div>
-          {/* Price */}
+
           <div className="absolute bottom-3 right-3">
             <span className="text-sm font-bold px-3 py-1.5 rounded-lg"
                   style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(8px)', color: '#f1f0ff' }}>
               {formatPrice(price)}
             </span>
           </div>
-          {/* Gradient fade to card */}
+
           <div className="absolute bottom-0 left-0 right-0 h-12"
-               style={{ background: 'linear-gradient(to bottom, transparent, rgba(13,13,28,0.8))' }} />
+               style={{ background: 'linear-gradient(to bottom, transparent, rgba(17,17,16,0.85))' }} />
         </div>
 
-        {/* Body */}
         <div className="p-4">
           <h3 className="font-bold text-base text-white leading-tight mb-1 group-hover:text-brand-300 transition-colors line-clamp-1">
             {title}
@@ -97,7 +96,6 @@ export default function EventCard({ event, variant = 'default' }) {
           </div>
         </div>
 
-        {/* Footer */}
         <div className="px-4 pb-4 flex items-center justify-between">
           <div className="flex gap-1.5 flex-wrap">
             {(tags || []).slice(0, 2).map(tag => (
@@ -115,13 +113,11 @@ export default function EventCard({ event, variant = 'default' }) {
     )
   }
 
-  // Default compact card
   return (
     <Link to={`/evento/${id}`} className="card-event group flex overflow-hidden animate-slide-up">
-      {/* Color bar */}
+
       <div className="w-2 flex-shrink-0" style={{ background: cfg.accent }} />
 
-      {/* Content */}
       <div className="flex-1 p-4">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">

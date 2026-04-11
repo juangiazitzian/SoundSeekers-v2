@@ -21,7 +21,7 @@ export default function EventFilters({ filters, onChange }) {
 
   return (
     <div className="space-y-4">
-      {/* Search + toggle */}
+
       <div className="flex gap-3">
         <div className="relative flex-1">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 pointer-events-none" />
@@ -43,7 +43,7 @@ export default function EventFilters({ filters, onChange }) {
           onClick={() => setShowExtra(v => !v)}
           className={`px-4 py-3 rounded-lg text-sm font-medium flex items-center gap-2 transition-all duration-200 ${
             showExtra || (city || sortBy !== 'date')
-              ? 'bg-brand-600/20 text-brand-400 border border-brand-600/30'
+              ? 'bg-brand-500/10 text-brand-400 border border-brand-500/25'
               : 'glass glass-hover text-white/60 hover:text-white'
           }`}
         >
@@ -64,7 +64,6 @@ export default function EventFilters({ filters, onChange }) {
         )}
       </div>
 
-      {/* Genre pills */}
       <div className="flex gap-2 flex-wrap">
         <button
           onClick={() => set('genre', '')}
@@ -97,10 +96,9 @@ export default function EventFilters({ filters, onChange }) {
         })}
       </div>
 
-      {/* Extra filters (city + sort) */}
       {showExtra && (
         <div className="flex gap-3 flex-wrap animate-slide-down">
-          {/* City */}
+
           <div className="flex-1 min-w-[180px]">
             <label className="block text-xs text-white/40 mb-1.5 font-medium">Ciudad</label>
             <select
@@ -114,7 +112,7 @@ export default function EventFilters({ filters, onChange }) {
               ))}
             </select>
           </div>
-          {/* Sort */}
+
           <div className="flex-1 min-w-[180px]">
             <label className="block text-xs text-white/40 mb-1.5 font-medium">Ordenar por</label>
             <select
@@ -130,7 +128,6 @@ export default function EventFilters({ filters, onChange }) {
         </div>
       )}
 
-      {/* Active filter summary */}
       {hasActiveFilters && (
         <div className="flex items-center gap-2 text-xs text-white/40">
           <span>Filtros activos:</span>

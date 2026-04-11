@@ -49,19 +49,19 @@ export default function EventDetail() {
 
   return (
     <div className="min-h-screen animate-fade-in">
-      {/* ── Hero Banner ────────────────────────────────────────────────── */}
+
       <div className="relative h-72 sm:h-96 overflow-hidden" style={{ background: cfg.bg }}>
-        {/* Pattern */}
+
         <div className="absolute inset-0 opacity-[0.08]"
              style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-        {/* Big emoji */}
+
         <div className="absolute inset-0 flex items-center justify-center text-[140px] opacity-10 select-none">
           {cfg.emoji}
         </div>
-        {/* Bottom gradient */}
+
         <div className="absolute bottom-0 left-0 right-0 h-32"
-             style={{ background: 'linear-gradient(to top, #080812, transparent)' }} />
-        {/* Top actions */}
+             style={{ background: 'linear-gradient(to top, #111110, transparent)' }} />
+
         <div className="absolute top-4 left-4 right-4 flex justify-between">
           <button
             onClick={() => navigate(-1)}
@@ -87,7 +87,7 @@ export default function EventDetail() {
             </button>
           </div>
         </div>
-        {/* Genre badge */}
+
         <div className="absolute bottom-6 left-6">
           <span className="badge text-xs font-bold"
                 style={{ background: `${cfg.accent}22`, color: cfg.accent, border: `1px solid ${cfg.accent}44` }}>
@@ -95,20 +95,18 @@ export default function EventDetail() {
           </span>
           {event.featured && (
             <span className="badge text-xs font-bold ml-2"
-                  style={{ background: 'rgba(251,191,36,0.15)', color: '#fbbf24', border: '1px solid rgba(251,191,36,0.3)' }}>
+                  style={{ background: 'rgba(251,191,36,0.12)', color: '#fbbf24', border: '1px solid rgba(251,191,36,0.28)' }}>
               ★ Destacado
             </span>
           )}
         </div>
       </div>
 
-      {/* ── Content ────────────────────────────────────────────────────── */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 -mt-2 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-          {/* Main info */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Title + artist */}
+
             <div>
               <h1 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
                 {event.title}
@@ -118,7 +116,6 @@ export default function EventDetail() {
               </p>
             </div>
 
-            {/* Meta grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {[
                 { icon: Calendar, label: 'Fecha', value: formatDate(event.date) },
@@ -138,7 +135,6 @@ export default function EventDetail() {
               ))}
             </div>
 
-            {/* Description */}
             <div>
               <h3 className="text-base font-bold text-white/80 mb-3">Sobre el evento</h3>
               <p className="text-sm text-white/55 leading-relaxed">
@@ -146,7 +142,6 @@ export default function EventDetail() {
               </p>
             </div>
 
-            {/* Tags */}
             {event.tags && event.tags.length > 0 && (
               <div>
                 <h3 className="text-base font-bold text-white/80 mb-3">Etiquetas</h3>
@@ -161,12 +156,11 @@ export default function EventDetail() {
               </div>
             )}
 
-            {/* Organizer */}
             <div>
               <h3 className="text-base font-bold text-white/80 mb-3">Organizado por</h3>
               <div className="flex items-center gap-3 glass rounded-xl p-3 w-fit">
                 <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold"
-                     style={{ background: 'linear-gradient(135deg, #7c3aed, #ec4899)' }}>
+                     style={{ background: 'linear-gradient(135deg, #f07a3a, #e8621e)' }}>
                   {event.organizerName?.slice(0, 2).toUpperCase()}
                 </div>
                 <span className="text-sm font-medium text-white/70">@{event.organizerName}</span>
@@ -174,17 +168,15 @@ export default function EventDetail() {
             </div>
           </div>
 
-          {/* Sidebar: Ticket */}
           <div className="space-y-4">
             <div className="sticky top-24 space-y-4">
-              {/* Price card */}
+
               <div className="glass rounded-2xl p-6 space-y-5">
                 <div>
                   <p className="text-xs text-white/40 mb-1">Precio de entrada</p>
                   <p className="text-3xl font-extrabold text-white">{formatPrice(event.price)}</p>
                 </div>
 
-                {/* Availability bar */}
                 {event.capacity && (
                   <div className="space-y-2">
                     <div className="flex justify-between text-xs text-white/40">
@@ -203,7 +195,6 @@ export default function EventDetail() {
                   </div>
                 )}
 
-                {/* CTA */}
                 <button
                   onClick={() => setTicketModalOpen(true)}
                   className="w-full py-3.5 rounded-xl font-bold text-sm transition-all duration-200 flex items-center justify-center gap-2"
@@ -221,7 +212,6 @@ export default function EventDetail() {
                 </p>
               </div>
 
-              {/* Date reminder */}
               <div className="glass rounded-xl p-4 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg flex flex-col items-center justify-center text-center flex-shrink-0"
                      style={{ background: `${cfg.accent}22`, border: `1px solid ${cfg.accent}33` }}>
@@ -241,7 +231,6 @@ export default function EventDetail() {
           </div>
         </div>
 
-        {/* ── Related events ──────────────────────────────────────────────── */}
         {related.length > 0 && (
           <div className="mt-14">
             <div className="flex items-center justify-between mb-5">
@@ -257,35 +246,34 @@ export default function EventDetail() {
         )}
       </div>
 
-      {/* ── Ticket modal (simulated) ──────────────────────────────────────── */}
       {ticketModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4"
              style={{ background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(8px)' }}
              onClick={() => setTicketModalOpen(false)}>
           <div className="relative max-w-sm w-full rounded-2xl p-8 text-center animate-slide-up"
-               style={{ background: '#111128', border: '1px solid rgba(255,255,255,0.1)' }}
+               style={{ background: '#1c1b19', border: '1px solid rgba(255,240,220,0.1)' }}
                onClick={e => e.stopPropagation()}>
             <div className="text-5xl mb-4">{cfg.emoji}</div>
             <h3 className="text-xl font-bold text-white mb-2">¡Entrada reservada!</h3>
             <p className="text-sm text-white/50 mb-1">{event.title}</p>
             <p className="text-xs text-white/35 mb-6">{event.venue} · {formatDateShort(event.date)}</p>
-            {/* Fake QR */}
+
             <div className="w-32 h-32 mx-auto rounded-xl mb-6 flex items-center justify-center"
                  style={{ background: 'white' }}>
               <svg viewBox="0 0 110 110" className="w-24 h-24" fill="#0d0d1c">
-                {/* Top-left finder */}
+
                 <rect x="5" y="5" width="30" height="30" rx="2"/>
                 <rect x="10" y="10" width="20" height="20" rx="1" fill="white"/>
                 <rect x="15" y="15" width="10" height="10" rx="1"/>
-                {/* Top-right finder */}
+
                 <rect x="75" y="5" width="30" height="30" rx="2"/>
                 <rect x="80" y="10" width="20" height="20" rx="1" fill="white"/>
                 <rect x="85" y="15" width="10" height="10" rx="1"/>
-                {/* Bottom-left finder */}
+
                 <rect x="5" y="75" width="30" height="30" rx="2"/>
                 <rect x="10" y="80" width="20" height="20" rx="1" fill="white"/>
                 <rect x="15" y="85" width="10" height="10" rx="1"/>
-                {/* Data modules */}
+
                 {[[42,5],[52,5],[62,5],[42,15],[52,25],[42,35],[52,35],[62,15],[62,35],
                   [5,42],[15,42],[25,42],[35,42],[5,52],[25,52],[35,52],[5,62],[15,62],[35,62],
                   [42,42],[62,42],[52,52],[42,62],[62,62],[72,72],[82,52],[92,62],[72,82],[92,82],

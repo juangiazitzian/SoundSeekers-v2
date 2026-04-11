@@ -34,7 +34,7 @@ export default function Register() {
   const [error, setError] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [step, setStep] = useState(1) // 1: role, 2: data
+  const [step, setStep] = useState(1)
 
   if (currentUser) { navigate('/'); return null }
 
@@ -59,8 +59,7 @@ export default function Register() {
       return
     }
     setLoading(true)
-    await new Promise(r => setTimeout(r, 500))
-    const result = register({
+    const result = await register({
       username: form.username.trim(),
       email: form.email.trim(),
       password: form.password,
@@ -79,10 +78,9 @@ export default function Register() {
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-lg animate-slide-up">
 
-        {/* Logo */}
         <div className="text-center mb-8">
           <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4"
-               style={{ background: 'linear-gradient(135deg, #7c3aed 0%, #ec4899 100%)' }}>
+               style={{ background: 'linear-gradient(135deg, #f07a3a 0%, #e8621e 100%)' }}>
             <Music2 className="w-6 h-6 text-white" />
           </div>
           <h1 className="text-2xl font-extrabold text-white">Crear cuenta</h1>
@@ -91,7 +89,6 @@ export default function Register() {
 
         <form onSubmit={handleSubmit} className="space-y-5">
 
-          {/* Step 1: Role */}
           <div className="glass rounded-2xl p-6">
             <h2 className="text-sm font-bold text-white/70 mb-4">¿Cómo querés usar SoundSeekers?</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -102,13 +99,13 @@ export default function Register() {
                   onClick={() => set('role', r.value)}
                   className="relative p-4 rounded-xl text-left transition-all duration-200"
                   style={form.role === r.value
-                    ? { background: 'rgba(124,58,237,0.15)', border: '1px solid rgba(124,58,237,0.35)' }
-                    : { background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }
+                    ? { background: 'rgba(232,98,30,0.12)', border: '1px solid rgba(232,98,30,0.35)' }
+                    : { background: '#1a1917', border: '1px solid rgba(255,240,220,0.08)' }
                   }
                 >
                   {form.role === r.value && (
                     <div className="absolute top-2.5 right-2.5 w-4 h-4 rounded-full flex items-center justify-center"
-                         style={{ background: '#7c3aed' }}>
+                         style={{ background: '#e8621e' }}>
                       <Check className="w-2.5 h-2.5 text-white" />
                     </div>
                   )}
@@ -120,11 +117,9 @@ export default function Register() {
             </div>
           </div>
 
-          {/* Step 2: Data */}
           <div className="glass rounded-2xl p-6 space-y-4">
             <h2 className="text-sm font-bold text-white/70">Tus datos</h2>
 
-            {/* Username */}
             <div>
               <label className="block text-xs font-medium text-white/50 mb-1.5">
                 Nombre de usuario <span className="text-red-400">*</span>
@@ -143,7 +138,6 @@ export default function Register() {
               </div>
             </div>
 
-            {/* Email */}
             <div>
               <label className="block text-xs font-medium text-white/50 mb-1.5">
                 Email <span className="text-red-400">*</span>
@@ -161,7 +155,6 @@ export default function Register() {
               </div>
             </div>
 
-            {/* Password */}
             <div>
               <label className="block text-xs font-medium text-white/50 mb-1.5">
                 Contraseña <span className="text-red-400">*</span>
@@ -183,7 +176,6 @@ export default function Register() {
               </div>
             </div>
 
-            {/* Confirm password */}
             <div>
               <label className="block text-xs font-medium text-white/50 mb-1.5">
                 Confirmar contraseña <span className="text-red-400">*</span>
@@ -210,7 +202,6 @@ export default function Register() {
               </div>
             </div>
 
-            {/* Bio (optional) */}
             {(form.role === 'artist' || form.role === 'organizer') && (
               <div>
                 <label className="block text-xs font-medium text-white/50 mb-1.5">
@@ -228,7 +219,6 @@ export default function Register() {
             )}
           </div>
 
-          {/* Error */}
           {error && (
             <div className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm animate-slide-down"
                  style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.2)', color: '#fca5a5' }}>
@@ -237,7 +227,6 @@ export default function Register() {
             </div>
           )}
 
-          {/* Submit */}
           <button type="submit" disabled={loading}
             className="btn-primary w-full justify-center flex items-center gap-2 py-3 text-sm disabled:opacity-60">
             {loading ? (

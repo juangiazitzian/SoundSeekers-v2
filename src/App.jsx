@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useStore } from './store'
 import Navbar from './components/Navbar'
@@ -16,6 +17,9 @@ function ProtectedRoute({ children }) {
 }
 
 export default function App() {
+  const loadEvents = useStore(s => s.loadEvents)
+  useEffect(() => { loadEvents() }, [loadEvents])
+
   return (
     <div className="noise-bg min-h-screen flex flex-col">
       <Navbar />
