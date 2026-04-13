@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Calendar, MapPin, Clock, Users, Ticket, ExternalLink, Share2, Heart } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { format, parseISO } from 'date-fns'
 import { es } from 'date-fns/locale'
 import { useStore } from '../store'
@@ -27,6 +27,8 @@ export default function EventDetail() {
   const navigate = useNavigate()
   const { getEventById, getFilteredEvents, currentUser } = useStore()
   const [liked, setLiked] = useState(false)
+
+  useEffect(() => { window.scrollTo(0, 0) }, [id])
   const [ticketModalOpen, setTicketModalOpen] = useState(false)
 
   const event = getEventById(id)

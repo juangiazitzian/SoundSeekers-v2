@@ -8,22 +8,22 @@ export const CITIES = [
 ]
 
 export const genreConfig = {
-  'Rock':       { bg: 'linear-gradient(135deg, #3b0000 0%, #7f1d1d 50%, #450a0a 100%)', accent: '#ef4444', emoji: '🎸' },
-  'Indie':      { bg: 'linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #2d1b69 100%)', accent: '#a78bfa', emoji: '🎵' },
-  'Techno':     { bg: 'linear-gradient(135deg, #0c1445 0%, #0e7490 50%, #0369a1 100%)', accent: '#22d3ee', emoji: '⚡' },
-  'Electronic': { bg: 'linear-gradient(135deg, #0f172a 0%, #1d4ed8 50%, #1e1b4b 100%)', accent: '#60a5fa', emoji: '🔊' },
-  'Trap':       { bg: 'linear-gradient(135deg, #0f2f1a 0%, #14532d 50%, #052e16 100%)', accent: '#4ade80', emoji: '🎤' },
-  'Hip-Hop':    { bg: 'linear-gradient(135deg, #1c1917 0%, #44403c 50%, #292524 100%)', accent: '#fbbf24', emoji: '🎧' },
-  'Jazz':       { bg: 'linear-gradient(135deg, #451a03 0%, #92400e 50%, #78350f 100%)', accent: '#fcd34d', emoji: '🎷' },
-  'Blues':      { bg: 'linear-gradient(135deg, #0c1445 0%, #1e3a8a 50%, #1d4ed8 100%)', accent: '#93c5fd', emoji: '🎹' },
-  'Folklore':   { bg: 'linear-gradient(135deg, #422006 0%, #92400e 50%, #78350f 100%)', accent: '#fb923c', emoji: '🪗' },
-  'Metal':      { bg: 'linear-gradient(135deg, #0a0a0a 0%, #27272a 50%, #18181b 100%)', accent: '#d1d5db', emoji: '🤘' },
-  'Pop':        { bg: 'linear-gradient(135deg, #4a044e 0%, #86198f 50%, #701a75 100%)', accent: '#f0abfc', emoji: '✨' },
-  'Reggaeton':  { bg: 'linear-gradient(135deg, #4c0519 0%, #be185d 50%, #9d174d 100%)', accent: '#fb7185', emoji: '🔥' },
+  'Rock':       { bg: 'linear-gradient(135deg, #180808 0%, #3d1212 50%, #1e0a0a 100%)', accent: '#dc5252', emoji: '🎸' },
+  'Indie':      { bg: 'linear-gradient(135deg, #12101e 0%, #281445 50%, #180f30 100%)', accent: '#9070d8', emoji: '🎵' },
+  'Techno':     { bg: 'linear-gradient(135deg, #080c18 0%, #0c3548 50%, #081820 100%)', accent: '#3aaaba', emoji: '⚡' },
+  'Electronic': { bg: 'linear-gradient(135deg, #080c18 0%, #101e48 50%, #0c0f20 100%)', accent: '#5580c0', emoji: '🔊' },
+  'Trap':       { bg: 'linear-gradient(135deg, #0a0f08 0%, #132508 50%, #080d05 100%)', accent: '#48985a', emoji: '🎤' },
+  'Hip-Hop':    { bg: 'linear-gradient(135deg, #1c1917 0%, #3c3835 50%, #252220 100%)', accent: '#d4a820', emoji: '🎧' },
+  'Jazz':       { bg: 'linear-gradient(135deg, #1a0d02 0%, #522808 50%, #321605 100%)', accent: '#e8b830', emoji: '🎷' },
+  'Blues':      { bg: 'linear-gradient(135deg, #080e1c 0%, #102040 50%, #0c1430 100%)', accent: '#6898c8', emoji: '🎹' },
+  'Folklore':   { bg: 'linear-gradient(135deg, #1a0e04 0%, #421e06 50%, #2a1005 100%)', accent: '#e87035', emoji: '🪗' },
+  'Metal':      { bg: 'linear-gradient(135deg, #111110 0%, #1e1c1a 50%, #161412 100%)', accent: '#a89e94', emoji: '🤘' },
+  'Pop':        { bg: 'linear-gradient(135deg, #160818 0%, #2e0a40 50%, #1e0830 100%)', accent: '#b068be', emoji: '✨' },
+  'Reggaeton':  { bg: 'linear-gradient(135deg, #180510 0%, #480d22 50%, #30080e 100%)', accent: '#c04868', emoji: '🔥' },
 }
 
 export const getGenreConfig = (genre) =>
-  genreConfig[genre] || { bg: 'linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%)', accent: '#a78bfa', emoji: '🎵' }
+  genreConfig[genre] || { bg: 'linear-gradient(135deg, #12101e 0%, #281445 100%)', accent: '#9070d8', emoji: '🎵' }
 
 export const seedUsers = [
   {
