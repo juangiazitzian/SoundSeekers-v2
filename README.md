@@ -27,7 +27,7 @@ npm install
 npm run dev
 ```
 
-La aplicación se abre automáticamente en `http://localhost:5173`
+El comando `npm run dev` inicia tanto el servidor backend (en `http://localhost:3001`) como el cliente frontend (en `http://localhost:5173`). La aplicación se abre automáticamente en `http://localhost:5173`.
 
 ## Cuentas demo
 
@@ -42,17 +42,18 @@ La aplicación se abre automáticamente en `http://localhost:5173`
 | Tecnología | Uso |
 |---|---|
 | React 18 + Vite 5 | Framework frontend y bundler |
+| Express 5 | Framework backend |
+| better-sqlite3 | Base de datos SQLite |
 | Zustand 5 | Estado global con persistencia en localStorage |
 | React Router 6 | Navegación entre vistas |
 | Tailwind CSS 3 | Estilos y diseño responsivo |
 | date-fns 4 | Formateo de fechas en español |
 | Lucide React | Iconografía |
+| CORS | Manejo de CORS en el backend |
 
 ## Arquitectura
 
-La aplicación es una SPA (Single Page Application) completamente del lado del cliente. No requiere backend ni base de datos externa. Los datos se persisten en el `localStorage` del navegador mediante Zustand, lo que permite mantener sesión y conservar eventos creados entre sesiones en la misma máquina.
-
-Los datos demo (eventos y usuarios) se cargan desde `src/data/seedData.js` al iniciar por primera vez.
+La aplicación es una SPA (Single Page Application) con arquitectura full-stack. El frontend está desarrollado en React y se comunica con un backend en Express.js que utiliza una base de datos SQLite para persistir los datos. Los datos demo (eventos y usuarios) se cargan desde `src/data/seedData.js` al iniciar el servidor por primera vez.
 
 ## Estructura del proyecto
 
@@ -67,17 +68,26 @@ src/
 │   ├── EventCard.jsx
 │   ├── EventFilters.jsx
 │   └── Footer.jsx
-└── pages/
-    ├── Home.jsx            # Página principal con hero, filtros y grilla de eventos
-    ├── EventDetail.jsx     # Vista de detalle de evento
-    ├── Login.jsx
-    ├── Register.jsx
-    ├── CreateEvent.jsx     # Formulario de publicación con vista previa
-    └── Profile.jsx
+├── pages/
+│   ├── Home.jsx            # Página principal con hero, filtros y grilla de eventos
+│   ├── EventDetail.jsx     # Vista de detalle de evento
+│   ├── Login.jsx
+│   ├── Register.jsx
+│   ├── CreateEvent.jsx     # Formulario de publicación con vista previa
+│   └── Profile.jsx
+├── api.js                 # Funciones para comunicación con el backend
+├── App.jsx
+├── main.jsx
+└── index.css
+server/
+├── db.js                  # Configuración de la base de datos SQLite
+└── index.js               # Servidor Express con endpoints de API
+database/
+└── soundseekers.sql       # Esquema de la base de datos
 ```
 
 ## Notas
 
-- Para restablecer los datos al estado inicial: abrir DevTools del navegador, ir a Application > Local Storage y eliminar la clave `soundseekers-v1`.
+- La base de datos SQLite se crea automáticamente al iniciar el servidor. Para restablecer los datos al estado inicial, elimina el archivo `server/soundseekers.db` y reinicia el servidor.
 - La aplicación no realiza cobros ni envía datos a ningún servidor externo.
 - Los eventos demo cubren las ciudades de Buenos Aires, Córdoba, Rosario, Mendoza, La Plata y Mar del Plata, con géneros que incluyen rock, indie, techno, electronic, trap, hip-hop, jazz, blues, folklore, metal, pop y reggaeton.
